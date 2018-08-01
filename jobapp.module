@@ -1,0 +1,29 @@
+<?php 
+
+function jobapp_init(){
+    drupal_add_css(drupal_get_path('module','jobapp').'/css/jobapp_style.css');
+    drupal_add_js(drupal_get_path('module','jobapp').'/js/jobapp_jfunctions.js');
+}
+function jobapp_menu(){
+	$items = array();
+	$items['custom/jobapp/index'] = array(
+		'title'            => t('Custom module'),
+		'page callback'    => 'jobapp_index_action',
+		'access arguments' => array('access content'),
+		'type'             => MENU_LOCAL_TASK,
+	);
+
+	return $items;
+}
+
+function jobapp_theme(){
+	 return array(
+		'jobapp_index' => array(
+			'template' => 'jobapp_index'
+		)
+	);
+}
+function jobapp_index_action(){
+	 return theme('jobapp_index', array());
+}
+
